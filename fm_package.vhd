@@ -1,3 +1,4 @@
+
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
@@ -13,6 +14,21 @@ constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS =>
 function QUANTIZE_F (f : real) return std_logic_vector;
 function QUANTIZE_I (i : std_logic_vector) return std_logic_vector;
 function DEQUANTIZE (i : std_logic_vector) return std_logic_vector;
+
+constant PI : real :=  3.1415926535897932384626433832795;
+constant ADC_RATE : integer := 64000000;
+constant USRP_DECIM : integer := 250; 
+constant QUAD_RATE : integer := (ADC_RATE/USRP_DECIM); 
+constant AUDIO_DECIM : integer := 8;
+constant AUDIO_RATE : integer := (QUAD_RATE/AUDIO_DECIM);	
+--constant VOLUME_LEVEL : std_logic_vector(DATA_SIZE-1 downto 0) := "0000000000000000";-- := QUANTIZE_F(1.0);--this cant be done in this file it has to be done outside of the package apparently
+constant SAMPLES : integer := 65536*4;
+constant AUDIO_SAMPLES : integer := (SAMPLES/AUDIO_DECIM);
+constant MAX_TAPS : integer := 32;
+constant MEX_DEV : real := 55000.0;
+--constant FM_DEMOD_GAIN : std_logic_vector(DATA_SIZE-1 downto 0) :="0000000000000000"; --same as stated above
+constant TAU : real := 0.000075;
+constant W_PP : real := 0.21140067;
 
 end package;
 
