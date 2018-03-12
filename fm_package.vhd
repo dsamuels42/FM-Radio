@@ -78,7 +78,7 @@ constant MEX_DEV : real := 55000.0;
 --constant FM_DEMOD_GAIN : std_logic_vector(DATA_SIZE-1 downto 0) :="0000000000000000"; --same as stated above
 constant TAU : real := 0.000075;
 constant W_PP : real := 0.21140067;
-
+type INTERMED_ARR is array (0 to MAX_TAPS-1) of std_logic_vector(DATA_SIZE-1 downto 0); -- this allows the array to be used a type for ports
 end package;
 
 package body fm_package is
