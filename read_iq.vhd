@@ -18,13 +18,16 @@ architecture behavior of read_iq is
 begin
 
 regproc: process (clock, reset)
+variable temp : std_logic_vector (2*DATA_SIZE-1 downto 0);
 begin
 	if (reset = '1') then
 		I <= (OTHERS => '0');
 		Q <= (OTHERS => '0');
 	elsif (rising_edge(clock)) then
-		I <= QUANTIZE_I(IQ(DATA_SIZE-1 downto 0));
-		Q <= QUANTIZE_I(IQ(2*DATA_SIZE-1 downto DATA_SIZE));
+		temp := QUANTIZE_I(IQ(DATA_SIZE-1 downto 0));
+		I <= temp(DATA_SIZE-1 downto 0);
+		temp := QUANTIZE_I(IQ(2*DATA_SIZE-1 downto DATA_SIZE));
+		Q <= temp(DATA_SIZE-1 downto 0);
 	end if;
 end process regproc;
 

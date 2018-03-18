@@ -79,7 +79,29 @@ constant MEX_DEV : real := 55000.0;
 constant TAU : real := 0.000075;
 constant W_PP : real := 0.21140067;
 type INTERMED_ARR is array (0 to MAX_TAPS-1) of std_logic_vector(DATA_SIZE-1 downto 0); -- this allows the array to be used a type for ports
+
+
+
+--Components
+component read_iq is
+port (
+	signal clock : in std_logic;
+	signal reset : in std_logic;
+	signal IQ : in std_logic_vector (2*DATA_SIZE-1 downto 0);
+	signal I : out std_logic_vector (DATA_SIZE-1 downto 0);
+	signal Q : out std_logic_vector (DATA_SIZE-1 downto 0)
+);
+end component;
+
+
 end package;
+
+
+
+
+
+
+
 
 package body fm_package is
 
