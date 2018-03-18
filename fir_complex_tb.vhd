@@ -5,35 +5,41 @@ use IEEE.std_logic_textio.all;
 use STD.textio.all;
 use work.fm_package.all;
 
-entity IQ_tb is
+entity fir_complex_tb is
 generic
 (
-	constant IN_NAME : string (1 to 13) := "test/usrp.dat";
-	constant OUT_NAME1 : string (1 to 15) := "test/I_file.dat";
-	constant OUT_NAME2 : string (1 to 15) := "test/Q_file.dat";
+	constant IN_NAME1 : string (1 to 15) := "test/I_file.dat";
+	constant IN_NAME2 : string (1 to 15) := "test/Q_file.dat";
+	constant OUT_NAME1 : string (1 to 19) := "test/I_fir_file.dat";
+	constant OUT_NAME2 : string (1 to 19) := "test/Q_fir_file.dat";
 	constant CLOCK_PERIOD : time := 10 ns
-); end entity;
+); 
+end entity;
 
 
-architecture behavior of IQ_tb is
+architecture behavior of fir_complex_tb is
 	--clock, reset, signals
-		-- clock, reset signals
 signal clock : std_logic := '1';
 signal hold_clock : std_logic := '0';
 signal reset : std_logic := '0';
-signal IQ : std_logic_vector (2*DATA_SIZE-1 downto 0);
-signal I : std_logic_vector (DATA_SIZE-1 downto 0);
-signal Q : std_logic_vector (DATA_SIZE-1 downto 0);
+signal x_real, x_imag : std_logic_vector (DATA_SIZE-1 downto 0);
+signal y_real, y_imag : std_logic_vector (DATA_SIZE-1 downto 0);
 
 begin
 
-test_component: component read_iq
+test_component: component fir_complex
+generic map (
+	TAPS => CHANNEL_COEFF_TAPS,
+	REAL_COEFF => CHANNEL_COEFFS_REAL,
+	IMAG_COEFF => CHANNEL_COEFFS_IMAG
+)
 port map (
 	clock => clock,
 	reset => reset,
-	IQ => IQ,
-	I => I,
-	Q => Q
+	x_real => x_real,
+	x_imag => x_imag,
+	y_real => y_real,
+	y_imag => y_imag
 );
 
 
@@ -63,7 +69,8 @@ end process reset_process;
 
 file_read_process : process 
     type raw_file is file of character;
-    file mem_in_file : raw_file open read_mode is IN_NAME;
+    file mem_in_file1 : raw_file open read_mode is IN_NAME1;
+    file mem_in_file2 : raw_file open read_mode is IN_NAME2;
     variable char : character;
     variable din : std_logic_vector (7 downto 0);
 begin
@@ -71,23 +78,27 @@ begin
     wait until (reset = '0');
 
     for j in 0 to 99 loop
-        read( mem_in_file, char );
+        read( mem_in_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (7 downto 0) <= din;
-	read( mem_in_file, char );
+	x_real (7 downto 0) <= din;
+	read( mem_in_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (15 downto 8) <= din;
-        read( mem_in_file, char );
+	x_real (15 downto 8) <= din;
+	read( mem_in_file1, char );
+	read( mem_in_file1, char );
+
+        read( mem_in_file2, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (23 downto 16) <= din;
-	read( mem_in_file, char );
+	x_imag (7 downto 0) <= din;
+	read( mem_in_file2, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (31 downto 24) <= din;
+	x_imag (15 downto 8) <= din;
         wait until (clock = '0');
         wait until (clock = '1');
     end loop;
 
-    file_close( mem_in_file );
+    file_close( mem_in_file1 );
+    file_close( mem_in_file1 );
     wait;
 end process file_read_process; 
 
@@ -99,38 +110,40 @@ file_compare_process : process
     variable errors : integer := 0;
     variable char : character;
     variable din : std_logic_vector (7 downto 0);
-    variable i_val : std_logic_vector (15 downto 0);
-    variable q_val : std_logic_vector (15 downto 0);
+    variable real_val : std_logic_vector (15 downto 0);
+    variable imag_val : std_logic_vector (15 downto 0);
     variable ln : line;
 begin
     wait until (reset = '1');
     wait until (reset = '0');
     wait until (clock = '0');
     wait until (clock = '1');
+    wait until (clock = '0');
+    wait until (clock = '1');
 
     for j in 0 to 99 loop
         read( mem_out_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	i_val (7 downto 0) := din;
+	real_val (7 downto 0) := din;
 	read( mem_out_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	i_val (15 downto 8) := din;
+	real_val (15 downto 8) := din;
 	read( mem_out_file1, char );
 	read( mem_out_file1, char );
 
         read( mem_out_file2, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	q_val (7 downto 0) := din;
+	imag_val (7 downto 0) := din;
 	read( mem_out_file2, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	q_val (15 downto 8) := din;
+	imag_val (15 downto 8) := din;
         read( mem_out_file2, char );
         read( mem_out_file2, char );
 	wait until(clock = '0');
-	if (I /= i_val) then
+	if (y_real /= real_val) then
 		errors := errors + 1;
 	end if;
-	if (Q /= q_val) then
+	if (y_imag /= imag_val) then
 		errors := errors + 1;
 	end if;
 	wait until(clock = '1');

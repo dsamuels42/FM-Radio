@@ -25,12 +25,18 @@ architecture behavior of fir_complex is
 type INTERMED_ARR_T is array (0 to TAPS-1) of std_logic_vector(DATA_SIZE-1 downto 0);
 signal intermed_real : INTERMED_ARR_T;
 signal intermed_imag : INTERMED_ARR_T;
-signal y_r_r : std_logic_vector(DATA_SIZE-1 downto 0);
-signal y_i_r : std_logic_vector(DATA_SIZE-1 downto 0);
+--signal y_r_r : std_logic_vector(DATA_SIZE-1 downto 0);
+--signal y_i_r : std_logic_vector(DATA_SIZE-1 downto 0);
 
 begin
 
 reg_proc: process (clock, reset)
+variable mult_temp1 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
+variable mult_temp2 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
+variable deq_temp1 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
+variable deq_temp2 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
+variable temp1 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
+variable temp2 : std_logic_vector(2*DATA_SIZE-1 downto 0) := (OTHERS => '0');
 begin
 	if (reset = '1') then
 		y_real <= (OTHERS => '0');
@@ -40,16 +46,21 @@ begin
 			intermed_imag(i) <= (OTHERS => '0');
 		end loop;
 	elsif (rising_edge(clock)) then
+		temp1 := (OTHERS => '0');
+		temp2 := (OTHERS => '0');
 		for i in 0 to TAPS-1 loop
-			y_r_r <= std_logic_vector(signed(y_r_r) + signed(DEQUANTIZE(
-				std_logic_vector(signed(intermed_real(i)) * signed(REAL_COEFF(i))))));
-			y_i_r <= std_logic_vector(signed(y_i_r) + signed(DEQUANTIZE(
-				std_logic_vector(signed(intermed_imag(i)) * signed(REAL_COEFF(i))))));
-		end loop;
-		y_real <= y_r_r;
-		y_imag <= y_i_r;
+			mult_temp1 := std_logic_vector(signed(intermed_real(i)) * signed(REAL_COEFF(i)));
+			deq_temp1 := DEQUANTIZE(mult_temp1);
+			temp1 := std_logic_vector(signed(temp1) + signed(deq_temp1));
 
-		for i in TAPS-1 to 1 loop
+			mult_temp2 := std_logic_vector(signed(intermed_imag(i)) * signed(REAL_COEFF(i)));
+			deq_temp2 := DEQUANTIZE(mult_temp2);
+			temp2 := std_logic_vector(signed(temp2) + signed(deq_temp2));
+		end loop;
+		y_real <= temp1(15 downto 0);
+		y_imag <= temp2(15 downto 0);
+
+		for i in TAPS-1 downto 1 loop
 			intermed_real(i) <= intermed_real(i - 1);
 			intermed_imag(i) <= intermed_imag(i - 1);
 		end loop;

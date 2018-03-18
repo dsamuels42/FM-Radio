@@ -93,6 +93,21 @@ port (
 );
 end component;
 
+component fir_complex is
+generic (
+	constant TAPS : integer;
+	constant REAL_COEFF : COEFF_ARR_T;
+	constant IMAG_COEFF : COEFF_ARR_T
+);
+port (
+	signal clock : in std_logic;
+	signal reset : in std_logic;
+	signal x_real : in std_logic_vector(DATA_SIZE-1 downto 0);
+	signal x_imag : in std_logic_vector(DATA_SIZE-1 downto 0);
+	signal y_real : out std_logic_vector(DATA_SIZE-1 downto 0);
+	signal y_imag : out std_logic_vector(DATA_SIZE-1 downto 0)
+);
+end component;
 
 end package;
 
