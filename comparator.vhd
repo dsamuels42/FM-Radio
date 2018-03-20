@@ -31,6 +31,9 @@ divide: process(DINL,DINR)
 	elsif (DINR_v > DINL_v) then
 		DOUT_v := DINL_v;
 		isGreaterEq <= '0';
+	else 
+	DOUT_v := 0;
+		isGreaterEq <= '0';
 end if;
 
 DOUT <= std_logic_vector(to_unsigned(DOUT_v, DATA_WIDTH));

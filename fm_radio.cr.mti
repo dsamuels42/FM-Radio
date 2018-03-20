@@ -1,61 +1,5 @@
-C:/Users/David/Documents/495_FPGA/fm_radio/fir_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fir_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_textio
--- Loading package MATH_REAL
--- Loading package fm_package
--- Compiling entity fir_tb
--- Compiling architecture behavior of fir_tb
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/divider.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/divider.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package calc_const
--- Loading package NUMERIC_STD
--- Compiling entity divider
--- Compiling architecture structural_combinational of divider
--- Compiling architecture behavioral_sequential of divider
--- Loading entity divider
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/calc_const.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/calc_const.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling package calc_const
--- Compiling package body calc_const
--- Loading package calc_const
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/de_emphasis.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/de_emphasis.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package std_logic_textio
--- Loading package MATH_REAL
--- Loading package fm_package
--- Compiling entity de_emphasis
--- Compiling architecture behavioral of de_emphasis
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/add_sub.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/add_sub.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package MATH_REAL
--- Loading package fm_package
--- Compiling entity add_sub
--- Compiling architecture behavior of add_sub
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/mult.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/mult.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/mult.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/mult.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -65,17 +9,59 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity mult
 -- Compiling architecture behavior of mult
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fm_radio_top.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fm_radio_top.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fm_radio_top.vhd {0 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Loading package calc_const
 -- Compiling entity fm_radio_top
 -- Compiling architecture behavior of fm_radio_top
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(120): (vcom-1031) Formal generic "TAPS" has OPEN or no actual associated with it.
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fir_complex_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fir_complex_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(120): (vcom-1031) Formal generic "DECIMATION" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(120): (vcom-1031) Formal generic "COEFF" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(127): (vcom-1031) Formal generic "TAPS" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(127): (vcom-1031) Formal generic "DECIMATION" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(127): (vcom-1031) Formal generic "COEFF" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(132): (vcom-1031) Formal generic "TAPS" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(132): (vcom-1031) Formal generic "DECIMATION" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(132): (vcom-1031) Formal generic "COEFF" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(139): (vcom-1031) Formal generic "TAPS" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(139): (vcom-1031) Formal generic "DECIMATION" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(139): (vcom-1031) Formal generic "COEFF" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(155): (vcom-1031) Formal generic "TAPS" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(155): (vcom-1031) Formal generic "DECIMATION" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(155): (vcom-1031) Formal generic "COEFF" has OPEN or no actual associated with it.
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(170): Signal "add_out" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(170): Enumeration literal 'x' is type std.STANDARD.CHARACTER; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(170): Enumeration literal 'x' is type std.STANDARD.CHARACTER; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(170): Signal "deemph_L_out" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(182): Signal "sub_out" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(182): Enumeration literal 'x' is type std.STANDARD.CHARACTER; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(182): Enumeration literal 'x' is type std.STANDARD.CHARACTER; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(182): Signal "deemph_R_out" is type ieee.std_logic_1164.STD_LOGIC_VECTOR; expecting type work.fm_package.INTERMED_ARR.
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_radio_top.vhd(187): VHDL Compiler exiting
+
+} {12.0 13.0 14.0 15.0 16.0 17.0 18.0 19.0 20.0 21.0 22.0 23.0 24.0 25.0 26.0 27.0 28.0 29.0 30.0 31.0 32.0 33.0 34.0 35.0 36.0 37.0 38.0 39.0 40.0 41.0 42.0 51.0} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fir_complex_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fir_complex_tb.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -86,19 +72,8 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity fir_complex_tb
 -- Compiling architecture behavior of fir_complex_tb
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/read_iq.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/read_iq.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package MATH_REAL
--- Loading package fm_package
--- Compiling entity read_iq
--- Compiling architecture behavior of read_iq
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fm_package.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fm_package.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fm_package.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fm_package.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -108,8 +83,20 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling package body fm_package
 -- Loading package fm_package
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/gain.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/gain.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/divider.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/divider.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package calc_const
+-- Loading package NUMERIC_STD
+-- Compiling entity divider
+-- Compiling architecture structural_combinational of divider
+-- Compiling architecture behavioral_sequential of divider
+-- Loading entity divider
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/gain.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/gain.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -119,8 +106,79 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity gain
 -- Compiling architecture behavior of gain
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/iq_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/iq_tb.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/shiftl_4_5.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/shiftl_4_5.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package calc_const
+-- Compiling entity shiftl_4_5
+-- Compiling architecture struct of shiftl_4_5
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/de_emphasis.vhd {0 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\de_emphasis.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Compiling entity de_emphasis
+-- Compiling architecture behavioral of de_emphasis
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\de_emphasis.vhd(89): (vcom-1136) Unknown identifier "x".
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\de_emphasis.vhd(89): (vcom-1136) Unknown identifier "y".
+
+** Error: C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\de_emphasis.vhd(97): VHDL Compiler exiting
+
+} {12.0 13.0 14.0 15.0 16.0 17.0} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/add_sub.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/add_sub.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Compiling entity add_sub
+-- Compiling architecture behavior of add_sub
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fifo.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fifo.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Compiling entity fifo
+-- Compiling architecture behavior of fifo
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/read_iq.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\read_iq.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Compiling entity read_iq
+-- Compiling architecture behavior of read_iq
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/demod_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\demod_tb.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Compiling entity demod_tb
+-- Compiling architecture behavior of demod_tb
+
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/iq_tb.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\iq_tb.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -131,18 +189,8 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity IQ_tb
 -- Compiling architecture behavior of IQ_tb
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/comparator.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/comparator.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package calc_const
--- Compiling entity comparator
--- Compiling architecture behavioral of comparator
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fir_complex.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fir_complex.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fir_complex.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\fir_complex.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -152,29 +200,17 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity fir_complex
 -- Compiling architecture behavior of fir_complex
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fir.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fir.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/calc_const.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/calc_const.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Loading package NUMERIC_STD
--- Loading package MATH_REAL
--- Loading package fm_package
--- Compiling entity fir
--- Compiling architecture behavior of fir
-
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/shiftl_4_5.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/shiftl_4_5.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Loading package NUMERIC_STD
+-- Compiling package calc_const
+-- Compiling package body calc_const
 -- Loading package calc_const
--- Compiling entity shiftl_4_5
--- Compiling architecture struct of shiftl_4_5
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/demod.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/demod.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/demod.vhd {1 {vcom -work work -2002 -explicit -stats=none {C:\Users\Jason\Desktop\FM-Radio-master\FM-Radio-master\demod.vhd}
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -187,14 +223,15 @@ Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  
 -- Compiling entity demod
 -- Compiling architecture behavior of demod
 
-} {} {}} C:/Users/David/Documents/495_FPGA/fm_radio/fifo.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/David/Documents/495_FPGA/fm_radio/fifo.vhd
-Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+} {} {}} C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fir.vhd {1 {vcom -work work -2002 -explicit -stats=none C:/Users/Jason/Desktop/FM-Radio-master/FM-Radio-master/fir.vhd
+Model Technology ModelSim ALTERA vcom 10.4b Compiler 2015.05 May 27 2015
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
 -- Loading package NUMERIC_STD
--- Loading package std_logic_textio
--- Compiling entity fifo
--- Compiling architecture behavior of fifo
+-- Loading package MATH_REAL
+-- Loading package fm_package
+-- Compiling entity fir
+-- Compiling architecture behavior of fir
 
 } {} {}}

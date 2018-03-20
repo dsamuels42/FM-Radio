@@ -116,26 +116,26 @@ fifo0 : component fifo
 
 --fir -> mult -> fir on top of block diagram path 
 fir_L0 : component fir
-	generic map(BP_LMR_COEFF_TAPS, 1, BP_LMR_COEFFS)
+	--generic map()
 	port map(clock, reset, fifo0_out, fir_L0_out, fir_L0_valid);
 	
 mult_L0 : component mult
 	port map(clock, reset, fir_L0_out, fir_L2_out, mult_L0_out);
 	
 fir_L3 : component fir
-	generic map(AUDIO_LMR_COEFF_TAPS, AUDIO_DECIM, AUDIO_LMR_COEFFS)
+--	generic map()
 	port map(clock, reset, mult_L0_out, fir_L3_out, fir_L3_valid);
 
 --fir -> mult -> fir -> mult on bottom of block diagram path
 fir_L1 : component fir
-	generic map(BP_PILOT_COEFF_TAPS, 1, BP_PILOT_COEFFS)
+--	generic map()
 	port map(clock,reset, fifo0_out, fir_L1_out, fir_L1_valid);
 
 mult_L1 : component mult port map(clock, reset, fir_L1_out, fir_L1_out, 
 	mult_L1_out);
 
 fir_L2 : component fir
-	generic map(HP_COEFF_TAPS, 1, HP_COEFFS)
+	--generic map()
 	port map(clock, reset, mult_L1_out, fir_L2_out, fir_L2_valid);
 
 
@@ -151,7 +151,7 @@ fifo1 : component fifo port map(clock, clock, reset, fir_L3_valid, '1',
 	
 	
 	fir_R0 : component fir 
-	generic map(AUDIO_LPR_COEFF_TAPS, AUDIO_DECIM, AUDIO_LPR_COEFFS)
+--	generic map()
 	port map(clock ,reset, fifo0_out, fir_R0_out, fir_R0_valid);
 	
 	fifo2 : component fifo port map(clock, clock, reset, fir_R0_valid, '1', fir_R0_out, 
