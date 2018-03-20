@@ -23,6 +23,28 @@ signal reset : std_logic := '0';
 signal x : std_logic_vector (DATA_SIZE-1 downto 0);
 signal y : std_logic_vector (DATA_SIZE-1 downto 0);
 
+
+component de_emphasis is 
+generic(
+
+
+constant TAPS : integer := IIR_COEFF_TAPS; 
+constant DECIMATION : integer := 1; 
+constant X_COEFFS : coeffs := (QUANTIZE_F(0.0), QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))); 
+constant Y_COEFFS : coeffs := (QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0))),QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))); 
+constant N_SAMPLES : integer := AUDIO_SAMPLES
+
+);
+port(
+	
+	signal clock : in std_logic;
+	signal reset : in std_logic; 
+	signal x_in : in std_logic_Vector(DATA_SIZE-1 downto 0) ;	
+	signal y_out : out std_logic_vector(DATA_SIZE-1 downto 0)
+);
+
+end component;
+
 begin
 
 test_component: component de_emphasis
