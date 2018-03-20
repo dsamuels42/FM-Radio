@@ -109,6 +109,24 @@ port (
 );
 end component;
 
+component demod is
+generic
+(
+constant gain : integer := 10	
+);
+port
+(
+ signal clock : in std_logic;
+ signal reset : in std_logic;
+ signal start : in std_logic;
+ signal I : in std_logic_vector(DATA_SIZE - 1 downto 0);
+ signal Q : in std_logic_vector(DATA_SIZE - 1 downto 0);
+ signal demod_out : out std_logic_vector(DATA_SIZE - 1 downto 0);
+ signal done : out std_logic
+);
+end component;
+
+
 end package;
 
 
