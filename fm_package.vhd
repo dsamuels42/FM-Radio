@@ -9,7 +9,7 @@ package fm_package is
 constant DATA_SIZE: integer := 16;
 constant BITS: integer := 10;
 constant QUANT_VAL: integer := 2 ** BITS;
-constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
+--constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
 
 type COEFF_ARR_T is array (natural range <>) of std_logic_vector(DATA_SIZE-1 downto 0);
 
