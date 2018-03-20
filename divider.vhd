@@ -161,7 +161,7 @@ architecture behavioral_sequential of divider is
 					quotient <= std_logic_vector(resize(unsigned(unsigned(temp_quotient)*1), DIVIDEND_WIDTH));
 					temp_quotient := x"00000000";
 					i := 0;
-					done <= '1';
+					--done <= '1';
 
 				else
 					overflow <= '1';
@@ -169,12 +169,13 @@ architecture behavioral_sequential of divider is
 					quotient <= std_logic_vector(to_unsigned(0, DIVIDEND_WIDTH));
 					temp_quotient := x"00000000";
 					i := 0;
-					done <= '1';
+					--done <= '1';
 				end if;
 			end if;
 		end if;
 
 		i_help <= i;
 		help := 0;
+		done <= '1';
 	end process EXECUTE_STAGE;
 end architecture behavioral_sequential;

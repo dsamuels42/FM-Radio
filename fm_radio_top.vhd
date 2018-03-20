@@ -34,35 +34,35 @@ signal deemph_L_out, deemph_R_out : std_logic_vector(DATA_SIZE-1 downto 0);
 
 begin
 --extract I/Q for read IQ
-file_read_process : process 
-    type raw_file is file of character;
-    file mem_in_file : raw_file open read_mode is IN_NAME;
-    variable char : character;
-    variable din : std_logic_vector (7 downto 0);
-begin
-wait until (reset = '1');
-    wait until (reset = '0');
+-- file_read_process : process 
+    -- type raw_file is file of character;
+    -- file mem_in_file : raw_file open read_mode is IN_NAME;
+    -- variable char : character;
+    -- variable din : std_logic_vector (7 downto 0);
+-- begin
+-- wait until (reset = '1');
+    -- wait until (reset = '0');
 
-    for j in 0 to 99 loop
-        read( mem_in_file, char );
-        din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (7 downto 0) <= din;
-	read( mem_in_file, char );
-        din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (15 downto 8) <= din;
-        read( mem_in_file, char );
-        din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (23 downto 16) <= din;
-	read( mem_in_file, char );
-        din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	IQ (31 downto 24) <= din;
-        wait until (clock = '0');
-        wait until (clock = '1');
-    end loop;
+    -- for j in 0 to 99 loop
+        -- read( mem_in_file, char );
+        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
+	-- IQ (7 downto 0) <= din;
+	-- read( mem_in_file, char );
+        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
+	-- IQ (15 downto 8) <= din;
+        -- read( mem_in_file, char );
+        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
+	-- IQ (23 downto 16) <= din;
+	-- read( mem_in_file, char );
+        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
+	-- IQ (31 downto 24) <= din;
+        -- wait until (clock = '0');
+        -- wait until (clock = '1');
+    -- end loop;
 
-    file_close( mem_in_file );
-    wait;
-end process file_read_process; 
+    -- file_close( mem_in_file );
+    -- wait;
+-- end process file_read_process; 
 
 ----------------------------------------------------------
 -- part 1 
@@ -104,6 +104,7 @@ port map (
 );
 
 fifo0 : component fifo
+generic map(16, 16)
 	port map (clock, clock, reset, demod_done, '1', 
 		demod_out, fifo0_out, fifo0_full, fifo0_empty);
 
@@ -167,7 +168,7 @@ deemph_L : component de_emphasis
 	generic map (IIR_COEFF_TAPS, 1, (QUANTIZE_F(0.0), QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))),
 		(QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0))),QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))),
 		AUDIO_SAMPLES)
-	port map(clock, reset, add_out, 'x', 'x', deemph_L_out);
+	port map(clock, reset, add_out, deemph_L_out);
 	
 gainL : component gain port map(clock, reset, deemph_L_out, gainL_out);
 	
@@ -179,7 +180,7 @@ deemph_R : component de_emphasis
 	generic map (IIR_COEFF_TAPS, 1, (QUANTIZE_F(0.0), QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))),
 		(QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0))),QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))),
 		AUDIO_SAMPLES)
-	port map(clock, reset,sub_out, 'x', 'x', deemph_R_out );
+	port map(clock, reset,sub_out, deemph_R_out );
 
 gainR : component gain port map(clock, reset, deemph_R_out, gainR_out);
 	

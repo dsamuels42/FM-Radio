@@ -98,7 +98,7 @@ begin
     end loop;
 
     file_close( mem_in_file1 );
-    file_close( mem_in_file2 );
+    file_close( mem_in_file1 );
     wait;
 end process file_read_process; 
 

@@ -9,7 +9,7 @@ package fm_package is
 constant DATA_SIZE: integer := 16;
 constant BITS: integer := 10;
 constant QUANT_VAL: integer := 2 ** BITS;
---constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
+constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
 
 type COEFF_ARR_T is array (natural range <>) of std_logic_vector(DATA_SIZE-1 downto 0);
 
@@ -130,7 +130,7 @@ end component;
 component fifo is
 generic
 (
-	constant FIFO_DATA_WIDTH : integer := 32;
+	constant FIFO_DATA_WIDTH : integer := 16;
 	constant FIFO_BUFFER_SIZE : integer := 32
 );
 port
@@ -186,10 +186,8 @@ port(
 	
 	signal clock : in std_logic;
 	signal reset : in std_logic; 
-	signal x_in : INTERMED_ARR ;	
-	signal x : INTERMED_ARR ;
-	signal y : INTERMED_ARR;
-	signal y_out : out INTERMED_ARR 
+	signal x_in : in std_logic_Vector(DATA_SIZE-1 downto 0) ;	
+	signal y_out : out std_logic_vector(DATA_SIZE-1 downto 0)
 );
 
 end component;
