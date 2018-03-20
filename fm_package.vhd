@@ -9,7 +9,7 @@ package fm_package is
 constant DATA_SIZE: integer := 16;
 constant BITS: integer := 10;
 constant QUANT_VAL: integer := 2 ** BITS;
---constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
+constant GAIN_C: std_logic_vector (DATA_SIZE-1 downto 0) := (0 => '1', OTHERS => '0');
 
 type COEFF_ARR_T is array (natural range <>) of std_logic_vector(DATA_SIZE-1 downto 0);
 
@@ -126,20 +126,74 @@ port
 );
 end component;
 
-component fir is
-generic (
-	constant TAPS : integer;
-	constant DECIMATION : integer;
-	constant COEFF : COEFF_ARR_T
+
+component fifo is
+generic
+(
+	constant FIFO_DATA_WIDTH : integer := 32;
+	constant FIFO_BUFFER_SIZE : integer := 32
 );
-port (
+port
+(
+	signal rd_clk : in std_logic;
+	signal wr_clk : in std_logic;
+	signal reset : in std_logic;
+	signal rd_en : in std_logic;
+	signal wr_en : in std_logic;
+	signal din : in std_logic_vector ((FIFO_DATA_WIDTH - 1) downto 0);
+	signal dout : out std_logic_vector ((FIFO_DATA_WIDTH - 1) downto 0);
+	signal full : out std_logic;
+	signal empty : out std_logic
+);
+end component ;
+
+component mult is
+port
+(
 	signal clock : in std_logic;
 	signal reset : in std_logic;
-	signal x : in std_logic_vector(DATA_SIZE-1 downto 0);
-	signal y : out std_logic_vector(DATA_SIZE-1 downto 0);
-	signal valid : out std_logic
+	signal A : in std_logic_vector (DATA_SIZE-1 downto 0);
+	signal B : in std_logic_vector (DATA_SIZE-1 downto 0);
+	signal res : out std_logic_vector (DATA_SIZE-1 downto 0)
 );
-end component fir;
+end component;
+
+component add_sub is
+port
+(
+	signal clock : in std_logic;
+	signal reset : in std_logic;
+	signal sub : in std_logic;
+	signal A : in std_logic_vector (DATA_SIZE-1 downto 0);
+	signal B : in std_logic_vector (DATA_SIZE-1 downto 0);
+	signal res : out std_logic_vector (DATA_SIZE-1 downto 0)
+);
+end component;
+
+
+component de_emphasis is 
+generic(
+
+
+constant TAPS : integer := IIR_COEFF_TAPS; 
+constant DECIMATION : integer := 1; 
+constant X_COEFFS : coeffs := (QUANTIZE_F(0.0), QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))); 
+constant Y_COEFFS : coeffs := (QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0))),QUANTIZE_F( ((W_PP - 1.0) / (W_PP +1.0)))); 
+constant N_SAMPLES : integer := AUDIO_SAMPLES
+
+);
+port(
+	
+	signal clock : in std_logic;
+	signal reset : in std_logic; 
+	signal x_in : INTERMED_ARR ;	
+	signal x : INTERMED_ARR ;
+	signal y : INTERMED_ARR;
+	signal y_out : out INTERMED_ARR 
+);
+
+end component;
+
 
 component gain is
 port
@@ -151,8 +205,22 @@ port
 );
 end component;
 
-
-
+component fir is
+	generic
+(
+	constant TAPS : integer;
+	constant DECIMATION : integer;
+	constant COEFF : COEFF_ARR_T
+);
+port
+(
+	signal clock : in std_logic;
+	signal reset : in std_logic;
+	signal x : in std_logic_vector(DATA_SIZE-1 downto 0);
+	signal y : out std_logic_vector(DATA_SIZE-1 downto 0);
+	signal valid : out std_logic
+);
+end component;
 
 end package;
 
