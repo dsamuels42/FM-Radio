@@ -5,22 +5,19 @@ use work.fm_package.all;
 use work.calc_const.all;
 
 entity fm_radio_top is
-generic(
-	constant DATA_SIZE : integer := 16;
-	constant BITS : integer := 10;
-	constant IN_NAME : string (1 to 13) := "test/usrp.dat"
-);
 port
 (
 	signal clock : in std_logic;
-	signal reset : in std_logic
-
+	signal reset : in std_logic;
+	signal IQ : in std_logic_vector (2*DATA_SIZE-1 downto 0);
+	signal output_l : out std_logic_vector (DATA_SIZE-1 downto 0);
+	signal output_r : out std_logic_vector (DATA_SIZE-1 downto 0)
 );
 end entity fm_radio_top;
 
 architecture behavior of fm_radio_top is
 
-signal IQ : std_logic_vector(2*DATA_SIZE-1 downto 0);
+--signal IQ : std_logic_vector(2*DATA_SIZE-1 downto 0);
 signal I, Q, I_demod, Q_demod, demod_out: std_logic_vector(DATA_SIZE-1 downto 0);
 signal demod_start,demod_done: std_logic;
 signal fifo0_full, fifo0_empty, fifo1_full, fifo1_empty, fifo2_full, fifo2_empty, fifo3_full, fifo3_empty : std_logic;
@@ -33,36 +30,7 @@ signal deemph_L_out, deemph_R_out : std_logic_vector(DATA_SIZE-1 downto 0);
 
 
 begin
---extract I/Q for read IQ
--- file_read_process : process 
-    -- type raw_file is file of character;
-    -- file mem_in_file : raw_file open read_mode is IN_NAME;
-    -- variable char : character;
-    -- variable din : std_logic_vector (7 downto 0);
--- begin
--- wait until (reset = '1');
-    -- wait until (reset = '0');
 
-    -- for j in 0 to 99 loop
-        -- read( mem_in_file, char );
-        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	-- IQ (7 downto 0) <= din;
-	-- read( mem_in_file, char );
-        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	-- IQ (15 downto 8) <= din;
-        -- read( mem_in_file, char );
-        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	-- IQ (23 downto 16) <= din;
-	-- read( mem_in_file, char );
-        -- din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	-- IQ (31 downto 24) <= din;
-        -- wait until (clock = '0');
-        -- wait until (clock = '1');
-    -- end loop;
-
-    -- file_close( mem_in_file );
-    -- wait;
--- end process file_read_process; 
 
 ----------------------------------------------------------
 -- part 1 
@@ -184,5 +152,7 @@ deemph_R : component de_emphasis
 
 gainR : component gain port map(clock, reset, deemph_R_out, gainR_out);
 	
+output_l <= gainL_out;
+output_r <= gainR_out;
 
 end architecture behavior;
