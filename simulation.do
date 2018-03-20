@@ -1,5 +1,5 @@
 vsim -gui work.fm_radio_top_tb
-run -all
+
 onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate -group FM_RADIO_TOP -radix hexadecimal /fm_radio_top_tb/clock
@@ -366,3 +366,5 @@ configure wave -timeline 0
 configure wave -timelineunits ps
 update
 WaveRestoreZoom {529088 ps} {1077417 ps}
+
+run -all

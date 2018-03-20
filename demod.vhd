@@ -69,20 +69,20 @@ demod_process : process(clock,reset, I,Q, prev_I, prev_Q, state, next_state, div
 	variable q3 : std_logic_vector(DATA_SIZE-1 downto 0) := QUANTIZE_F(3.0*PI/4.0);
 	---variable first : std_logic := '1';
 begin
-dividend_c <= dividend;
-divisor_c <= divisor;
-next_state <= state;
-prev_I_c <= prev_I;
-prev_Q_c <= prev_Q;
-y_c <= y;
-x_c <= x;
+--dividend_c <= dividend;
+--divisor_c <= divisor;
+--next_state <= state;
+--prev_I_c <= prev_I;
+--prev_Q_c <= prev_Q;
+--_c <= y;
+--x_c <= x;
 done <= '0';
 abs_y <= 0;
 divider_start <= '0';
-r := (OTHERS => '0');
-r_c <= r(DATA_SIZE-1 downto 0);
-demod_out_c <= (OTHERS => '0');
-angle_c <= angle;
+--r := (OTHERS => '0');
+--r_c <= r(DATA_SIZE-1 downto 0);
+--demod_out_c <= (OTHERS => '0');
+--angle_c <= angle;
 
 divider_start_c <= divider_start;
 
@@ -97,8 +97,8 @@ case(state) is
 			--if(first = '1') then
 				prev_I_c <= x"0000";
 				prev_Q_c <= x"0000";
-				x_c <= (OTHERS => '0');
-				y_c <= (OTHERS => '0');
+				--x_c <= (OTHERS => '0');
+			--	y_c <= (OTHERS => '0');
 				dividend_c <= (OTHErs => '0');
 				divisor_c <= (OTHErs => '0');
 				--demod_out <= (OTHERS => '0');
