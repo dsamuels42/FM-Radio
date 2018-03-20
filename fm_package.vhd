@@ -126,6 +126,21 @@ port
 );
 end component;
 
+component fir is
+generic (
+	constant TAPS : integer;
+	constant DECIMATION : integer;
+	constant COEFF : COEFF_ARR_T
+);
+port (
+	signal clock : in std_logic;
+	signal reset : in std_logic;
+	signal x : in std_logic_vector(DATA_SIZE-1 downto 0);
+	signal y : out std_logic_vector(DATA_SIZE-1 downto 0);
+	signal valid : out std_logic
+);
+end component fir;
+
 
 end package;
 

@@ -11,3 +11,5 @@
 test/usrp.dat
 work/*
 
+*.mpf
+*.mti
