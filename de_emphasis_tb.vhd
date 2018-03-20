@@ -29,8 +29,8 @@ test_component: component de_emphasis
 port map (
 	clock => clock,
 	reset => reset,
-	x => x,
-	y => y
+	x_in => x,
+	y_out => y
 );
 
 
