@@ -18,6 +18,7 @@ begin
 
 regproc: process (clock, reset)
 variable temp: std_logic_vector(2*DATA_SIZE-1 downto 0);
+constant GAIN_C: std_logic_vector(DATA_SIZE-1 downto 0) := QUANTIZE_F(1.0);
 begin
 	if (reset = '1') then
 		res <= (OTHERS => '0');
