@@ -8,8 +8,8 @@ use STD.textio.all;
 entity fifo is
 generic
 (
-	constant FIFO_DATA_WIDTH : integer := 32;
-	constant FIFO_BUFFER_SIZE : integer := 32
+	constant FIFO_DATA_WIDTH : integer := 16;
+	constant FIFO_BUFFER_SIZE : integer := 16
 );
 port
 (

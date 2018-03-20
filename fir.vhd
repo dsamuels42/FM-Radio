@@ -26,7 +26,7 @@ type INTERMED_ARR_T is array (0 to TAPS-1) of std_logic_vector(DATA_SIZE-1 downt
 signal intermed : INTERMED_ARR_T;
 constant VALID_BITS : integer := integer(ceil(log2(real(DECIMATION))));
 signal valid_count : std_logic_vector(VALID_BITS-1 downto 0);
-signal y_r : std_logic_vector(DATA_SIZE-1 downto 0);
+signal y_r : std_logic_vector(2*DATA_SIZE-1 downto 0);
 
 begin
 
@@ -48,7 +48,7 @@ begin
 		for i in 0 to TAPS-1 loop
 			y_r <= std_logic_vector(signed(y_r) + signed(DEQUANTIZE(std_logic_vector(signed(intermed(i)) * signed(COEFF(TAPS-i-1))))));
 		end loop;
-		y <= y_r;
+		y <= y_r(DATA_SIZE-1 downto 0);
 
 		for i in TAPS-1 to 1 loop
 			intermed(i) <= intermed(i - 1);

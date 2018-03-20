@@ -130,7 +130,7 @@ end component;
 component fifo is
 generic
 (
-	constant FIFO_DATA_WIDTH : integer := 32;
+	constant FIFO_DATA_WIDTH : integer := 16;
 	constant FIFO_BUFFER_SIZE : integer := 32
 );
 port
@@ -186,10 +186,8 @@ port(
 	
 	signal clock : in std_logic;
 	signal reset : in std_logic; 
-	signal x_in : INTERMED_ARR ;	
-	signal x : INTERMED_ARR ;
-	signal y : INTERMED_ARR;
-	signal y_out : out INTERMED_ARR 
+	signal x_in : in std_logic_Vector(DATA_SIZE-1 downto 0) ;	
+	signal y_out : out std_logic_vector(DATA_SIZE-1 downto 0)
 );
 
 end component;
