@@ -70,10 +70,10 @@ begin
     for j in 0 to 99 loop
         read( mem_in_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	x_in(7 downto 0) <= din;
+	x(7 downto 0) <= din;
 	read( mem_in_file1, char );
         din := std_logic_vector(to_unsigned( character'pos(char), 8 ));
-	x_in(15 downto 8) <= din;
+	x(15 downto 8) <= din;
 	read( mem_in_file1, char );
 	read( mem_in_file1, char );
 
@@ -113,7 +113,7 @@ begin
 	read( mem_out_file1, char );
 
 	wait until(clock = '0');
-	if (y_out /= valu) then
+	if (y /= valu) then
 		errors := errors + 1;
 	end if;
 	wait until(clock = '1');
