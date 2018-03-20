@@ -80,7 +80,7 @@ constant TAU : real := 0.000075;
 constant W_PP : real := 0.21140067;
 type INTERMED_ARR is array (0 to MAX_TAPS-1) of std_logic_vector(DATA_SIZE-1 downto 0); -- this allows the array to be used a type for ports
 type coeffs is array ( 0 to 1) of std_logic_vector(DATA_SIZE-1 downto 0); 
-
+constant IIR_COEFF_TAPS : integer := 2; 
 
 --Components
 component read_iq is
